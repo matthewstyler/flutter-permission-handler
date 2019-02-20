@@ -12,8 +12,6 @@ class AudioVideoPermissionStrategy : NSObject, PermissionStrategy {
     func checkPermissionStatus(permission: PermissionGroup) -> PermissionStatus {
         if permission == PermissionGroup.camera {
             return AudioVideoPermissionStrategy.getPermissionStatus(mediaType: AVMediaType.video)
-        } else if permission == PermissionGroup.microphone {
-            return AudioVideoPermissionStrategy.getPermissionStatus(mediaType: AVMediaType.audio)
         }
         
         return PermissionStatus.unknown
@@ -46,8 +44,6 @@ class AudioVideoPermissionStrategy : NSObject, PermissionStrategy {
         
         if permission == PermissionGroup.camera {
             mediaType = AVMediaType.video
-        } else if permission == PermissionGroup.microphone {
-            mediaType = AVMediaType.audio
         } else {
             completionHandler(PermissionStatus.unknown)
             return
